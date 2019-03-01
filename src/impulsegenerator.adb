@@ -1,5 +1,7 @@
 with RandomNumber;
 with Heart;
+with Ada.Text_IO;use Ada.Text_IO;
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 
 package body ImpulseGenerator is
    
@@ -12,11 +14,13 @@ package body ImpulseGenerator is
    procedure On(Gen : in out GeneratorType) is
    begin
       Gen.IsOn := True;
+      Put_Line("ImpulseGenerator is on");
    end On;
       
    procedure Off(Gen : in out GeneratorType) is
    begin
       Gen.IsOn := False;
+      Put_Line("ImpulseGenerator is off");
    end Off;
    
    function IsOn(Gen : in GeneratorType) return Boolean is
@@ -28,7 +32,12 @@ package body ImpulseGenerator is
    begin
       -- Only set the impulse if the machine is on
       if Gen.IsOn then
-	 Gen.Impulse := J;
+         Gen.Impulse := J;
+         Put("set Impulse to new value: ");
+         Put(Item => J);
+         New_Line;
+      else
+         Put_Line("set Impulse failed, Generator is off. ");
       end if;
    end SetImpulse;
    

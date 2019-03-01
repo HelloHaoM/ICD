@@ -1,5 +1,7 @@
 with Heart;
 with RandomNumber; 
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+with Ada.Text_IO; use Ada.Text_IO;
 
 package body HRM is
    
@@ -15,12 +17,14 @@ package body HRM is
    begin
      -- Get an initial reading for the heart
       Hrm.IsOn := True;
+      Put_Line("HeartRateMonitor is on");
       Heart.GetRate(Hrt, Hrm.Rate);
    end On;
       
    procedure Off(Hrm : in out HRMType) is
    begin
       Hrm.IsOn := False;
+      Put_Line("HeartRateMonitor is off");
    end Off;
    
    function IsOn(Hrm : in HRMType) return Boolean is
@@ -52,6 +56,9 @@ package body HRM is
 	 -- If the monitor is not on, return 0 for both values
 	 Hrm.Rate := Measures.BPM'First;
       end if; 
+      Put("Measured heart rate  = ");
+      Put(Item => Hrm.Rate);
+      New_Line;
       
    end Tick;
 end HRM;

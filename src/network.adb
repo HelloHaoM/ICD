@@ -4,7 +4,7 @@ with Principal;
 with Ada.Numerics.Float_Random;          use Ada.Numerics.Float_Random;
 with Ada.Assertions;
 with Ada.Text_IO; use Ada.Text_IO;
-with Ada.Integer_Text_IO;
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 
 package body Network is
    
@@ -45,7 +45,6 @@ package body Network is
                    RandomNumber.UniformInteger(Principals'First,
                                                Principals'Last)
                   );
-      
       case MsgType is
          when ModeOn =>
             return (MessageType => ModeOn,
